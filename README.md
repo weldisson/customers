@@ -32,6 +32,23 @@
 $ npm install
 ```
 
+## enviroments config
+
+make a file .env with content
+```bash
+SSO_URL=https://accounts.seguros.vitta.com.br
+GRANT_TYPE=client_credentials
+CLIENT_ID=customers 
+CLIENT_SECRET=453000f7-47a0-4489-bc47-891c742650e2
+SCOPE=openid
+SECRET=MySecret@2023
+REDIS_HOST=redis
+REDIS_PASSWORD=myP@ss@2023
+REDIS_PORT=6379
+PORT=3000
+
+```
+
 ## Running the app
 
 ```bash
@@ -44,7 +61,11 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+## Running the app with docker compose
 
+```bash
+$ docker compose up
+```
 ## Test
 
 ```bash
