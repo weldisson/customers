@@ -1,18 +1,31 @@
 version: '3'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - 3000:3000
-    depends_on:
-      - redis
-
   redis:
     image: redis
     ports:
       - 6379:6379
     environment:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SSO_URL=${SSO_URL}
+      - GRANT_TYPE=${GRANT_TYPE} 
+      - CLIENT_ID=${CLIENT_ID} 
+      - CLIENT_SECRET=${CLIENT_SECRET} 
+      - SCOPE=${SCOPE} 
+      - SECRET=${SECRET} 
+      - REDIS_HOST=${REDIS_HOST} 
+      - REDIS_PASSWORD=${REDIS_PASSWORD} 
+      - REDIS_PORT=${REDIS_PORT} 
+      - PORT=${PORT}
+    ports:
+      - 3000:3000
+    depends_on:
+      - redis
+
+  
